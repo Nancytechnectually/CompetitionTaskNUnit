@@ -439,7 +439,40 @@ namespace MarsQA_1.SpecflowPages.Pages
 
 
         }
+        public void dropdown ()
+        {
+            // Select Category dropdown
 
+            IWebElement Category = driver.FindElement(By.CssSelector("#service-listing-section > div.ui.container > div > form > div:nth-child(3) > div.twelve.wide.column > div > div:nth-child(1) > select"));
+
+            Category.Click();
+             Value1 = "Programming & Tech";
+             Value2 = "QA";
+
+            //select Category by value
+            Wait.ElementVisible(driver, "XPath", "//*[text()='"+Value1+"']", 10);
+            driver.FindElement(By.XPath("//*[text()='" + Value1 + "']")).Click();
+
+
+
+            // Select SubCategory dropdown
+
+            IWebElement SubCategory = driver.FindElement(By.CssSelector("#service-listing-section > div.ui.container > div > form > div:nth-child(3) > div.twelve.wide.column > div > div:nth-child(2) > div:nth-child(1) > select"));
+            var selectElement1 = new SelectElement(SubCategory);
+            SubCategory.Click();
+
+            //select SubCategory by value
+            Wait.ElementVisible(driver, "XPath", "//*[text()='QA']", 10);
+            driver.FindElement(By.XPath("//*[text()='"+Value2+"']")).Click();
+
+
+
+
+        }
+
+       public String Value1;
+       public String Value2;
+        
 
     }
 }
